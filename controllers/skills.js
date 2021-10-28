@@ -1,4 +1,4 @@
-
+// import the skills data
 import * as skillsDb from '../data/skill-db.js'
 
 function index(req, res) {
@@ -6,6 +6,7 @@ function index(req, res) {
     res.render('skills/index', {
       skills: skills,
       error: error,
+      // add this line
       time: req.time
     })
   })
@@ -20,20 +21,29 @@ function show(req, res){
   })
 }
 
-function newSkills(req, res){
-  res.render ('skills/new')
+function newSkill (req, res){
+  res.render('skills/new')
 }
-function create(req, res) {
+
+function create(req, res){
   console.log(req.body)
-  todoDb.create(req.body, function(error, skills) {
-		// Notice we are doing a redirect here!
-    res.redirect('/todos')
+  skillsDb.create(req.body, function(error, skill){
+    // Notice we are doing a redirect here!
+    res.redirect('/skills')
   })
 }
+
+function deleteSkill(req, res){
+  skillsDb.findByIdAndDelete(req.params.id, function (error, skill){
+    res.redirect('/skills')
+  })
+}
+
 
 export {
 	index,
   show,
-  newSkills as new,
-  create
+  newSkill as new,
+  create,
+  deleteSkill as delete
 }
