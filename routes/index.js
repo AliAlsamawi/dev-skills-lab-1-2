@@ -21,5 +21,5 @@ router.get('/', function(req, res) {
 
 export {
   router,
-  skillsCtrl
+  skillsCtrl,
 }

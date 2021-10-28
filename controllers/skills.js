@@ -20,7 +20,20 @@ function show(req, res){
   })
 }
 
+function newSkills(req, res){
+  res.render ('skills/new')
+}
+function create(req, res) {
+  console.log(req.body)
+  todoDb.create(req.body, function(error, skills) {
+		// Notice we are doing a redirect here!
+    res.redirect('/todos')
+  })
+}
+
 export {
 	index,
-  show
+  show,
+  newSkills as new,
+  create
 }

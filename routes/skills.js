@@ -4,19 +4,20 @@ const router = Router()
 
 /* GET users listing. */
 router.get('/', skillsCtrl.index)
+router.get('/new', skillsCtrl.new)
 router.get('/:id', skillsCtrl.show)
+router.post('/', skillsCtrl.create)
 
-router.get('/', function(req, res) {
-  skillDb.find({}, function(error, skills) {
-    res.render('skills/index', {
-      skills: skills,
-      error: error
-    })
-  })
-})
+// router.get('/', function(req, res) {
+//   skillDb.find({}, function(error, skills) {
+//     res.render('skills/index', {
+//       skills: skills,
+//       error: error
+//     })
+//   })
+// })
 
 
 export {
   router,
-  skillsCtrl
 }
