@@ -5,7 +5,8 @@ function index(req, res) {
   skillsDb.find({}, function(error, skills) {
     res.render('skills/index', {
       skills: skills,
-      error: error
+      error: error,
+      time: req.time
     })
   })
 }
